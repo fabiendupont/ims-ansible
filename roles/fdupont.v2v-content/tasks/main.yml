@@ -19,7 +19,9 @@
   args:
     chdir: /var/www/miq/vmdb
   with_items: miq_extra_automate_domains
-  when: "item not in automate_domain_names"
+  when:
+    - "miq_extra_automate_domains is defined"
+    - "item not in automate_domain_names"
   tags:
     - automate_domains
 
